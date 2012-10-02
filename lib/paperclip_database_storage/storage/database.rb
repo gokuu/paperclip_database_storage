@@ -22,7 +22,7 @@ module Paperclip
       end
 
       def get_attachment(style)
-        return PaperclipDatabase::Attachment.find(:first, :conditions => {
+        return PaperclipDatabaseStorage::Attachment.find(:first, :conditions => {
           :style => style, 
           :attached_type => self.instance.class.name, 
           :attached_id => self.instance.id,
@@ -61,7 +61,7 @@ module Paperclip
         @queued_for_write.each do |style, file|
           puts("[paperclip] Writing files for #{file} #{style}")
 
-          PaperclipDatabase::Attachment.new do |a|
+          PaperclipDatabaseStorage::Attachment.new do |a|
             a.attached_type = self.instance.class.name
             a.attached_id = self.instance.id
             a.style = style

@@ -15,12 +15,12 @@ Rails.application.routes.draw do
       loaded_url_templates << definition[:url]
 
       #ap [klass.name, attachment_name, definition]
-      get definition[:url] => 'paperclip_database/attachments#get_attachment'
+      get definition[:url] => 'paperclip_database_storage/attachments#get_attachment'
     end
   end
 
   # Generate the default route, if necessary
   if must_create_default_route
-    get Paperclip::Attachment.default_options[:url] => 'paperclip_database/attachments#get_attachment'
+    get Paperclip::Attachment.default_options[:url].gsub(/:id_partition/, '*id_partition') => 'paperclip_database_storage/attachments#get_attachment', :as => :default_pds
   end
 end

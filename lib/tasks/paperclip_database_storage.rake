@@ -1,5 +1,5 @@
-namespace :'paperclip-database' do
-  desc 'Copy necessary migrations to the rails project'
+namespace :'paperclip_database_storage' do
+  desc 'Copy necessary migrations from paperclip_database_storage to the rails project'
   task :setup => :environment do
     plugin_root = File.dirname(File.dirname(File.dirname(__FILE__)))
 
@@ -17,9 +17,5 @@ namespace :'paperclip-database' do
         FileUtils.cp(file, File.join(dest_dir, dest_file))        
       end
     end
-  end
-
-  task :list => :environment do
-    ap Paperclip.classes_with_attachments
   end
 end

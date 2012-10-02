@@ -1,4 +1,4 @@
-paperclip_database
+paperclip_database_storage
 ==================
 
 Adds support for storing a paperclip attachment file contents in a database table.
@@ -6,20 +6,20 @@ Adds support for storing a paperclip attachment file contents in a database tabl
 Requirements
 ------------
 
-Paperclip_database requires [Paperclip](https://github.com/thoughtbot/paperclip) version **>= 3.2.0**.
+paperclip_database_storage requires [Paperclip](https://github.com/thoughtbot/paperclip) version **>= 3.2.0**.
 
 Installation
 ------------
 
-Paperclip_database is distributed as a gem, and that is how it should be used in your app. 
+paperclip_database_storage is distributed as a gem, and that is how it should be used in your app. 
 
 Include the gem in your `Gemfile`, from rubygems:
 
-      gem 'paperclip_database', '>= 3.2.0'
+      gem 'paperclip_database_storage', '>= 3.2.0'
 
 Or, get the master branch from the repository:
 
-      gem 'paperclip_database', :git => 'git://github.com/gokuu/paperclip_database.git'
+      gem 'paperclip_database_storage', :git => 'git://github.com/gokuu/paperclip_database_storage.git'
 
 Usage
 -----
@@ -41,7 +41,7 @@ end
 Remarks
 -------
 
-The migration defined by `paperclip_database` contains several indexes, as every possible combination of the fields that can identify a single attachment. This should help getting an attachment as quickly as possible using any combination of parameters
+The migration defined by `paperclip_database_storage` contains several indexes, as every possible combination of the fields that can identify a single attachment. This should help getting an attachment as quickly as possible using any combination of parameters
 
 Limitations
 -----------
