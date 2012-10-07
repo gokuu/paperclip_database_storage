@@ -56,4 +56,4 @@ TO-DO
 * Add support for more than one database attachment per model
 * Enable defining a separate table for each different attachment
 
-Copyright (c) 2012 [Pedro Rodrigues], released under the MIT license
+Copyright (c) 2012 [Pedro Rodrigues](mailto:pedro@bbde.org), released under the MIT license
