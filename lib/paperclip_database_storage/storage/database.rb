@@ -65,7 +65,7 @@ module Paperclip
             a.attached_type = self.instance.class.name
             a.attached_id = self.instance.id
             a.style = style
-            a.content_type = self.instance_variable_get("@_#{self.name.to_s}_content_type")
+            a.content_type = file.content_type
             a.attachment_name = attachment_definitions.keys.first
             a.file_size = file.size
             a.file_data = file.read
