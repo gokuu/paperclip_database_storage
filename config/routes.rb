@@ -1,4 +1,4 @@
-Rails.application.routes.draw do
+Rails.application.routes.prepend do
   # Dynamically create routes based on defined attachments
   Rails.application.eager_load!
 
