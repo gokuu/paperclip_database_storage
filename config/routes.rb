@@ -21,6 +21,6 @@ Rails.application.routes.prepend do
 
   # Generate the default route, if necessary
   if must_create_default_route
-    get Paperclip::Attachment.default_options[:url].gsub(/:id_partition/, '*id_partition') => 'paperclip_database_storage/attachments#get_attachment', :as => :default_pds
+    get Paperclip::Attachment.default_options[:url].gsub(/:id_partition/, '*id_partition').gsub(/:filename/, '*filename') => 'paperclip_database_storage/attachments#get_attachment', :as => :default_pds
   end
 end
