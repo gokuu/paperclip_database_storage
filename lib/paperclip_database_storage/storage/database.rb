@@ -23,8 +23,8 @@ module Paperclip
 
       def get_attachment(style)
         return PaperclipDatabaseStorage::Attachment.find(:first, :conditions => {
-          :style => style, 
-          :attached_type => self.instance.class.name, 
+          :style => style,
+          :attached_type => self.instance.class.name,
           :attached_id => self.instance.id,
           :attachment_name => self.get_attachment_definitions.keys.first
         })
@@ -32,9 +32,9 @@ module Paperclip
 
       def get_attachment_definitions
         attachment_definitions = self.instance.class.attachment_definitions
-        
+
         if attachment_definitions.select { |k,v| v[:storage] == :database }.count > 1
-          raise Exception.new('paperclip-database does not support more than one attachment per model')
+          raise Exception.new('paperclip-database-storage does not support more than one attachment per model')
         end
 
         return attachment_definitions
