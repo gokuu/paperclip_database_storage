@@ -13,9 +13,15 @@ class PaperclipDatabaseStorage::AttachmentsController < ApplicationController
     raise ActionController::RoutingError.new('Too many images found. Check your route definition') if attachments.length > 1
 
     attachment = attachments.first
+
+    original_filename = attachment.attached.send(attachment.attached.attachment_definitions.select { |k, v| v[:storage] == :database }.keys.first).original_filename
+    original_extension = File.extname(original_filename)
+    filename = params[:filename] || original_filename
+    filename = "#{filename}#{original_extension}" unless filename =~ /#{original_extension}$/
+
     send_data attachment.file_data,
       :type => attachment.content_type,
       :disposition => (attachment.content_type.strip =~ /^image/ ? 'inline' : 'attachment'),
-      :filename => (params[:filename] || attachment.attached.send(attachment.attached.attachment_definitions.select { |k, v| v[:storage] == :database }.keys.first).original_filename)
+      :filename => filename
   end
 end
