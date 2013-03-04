@@ -55,12 +55,9 @@ module Paperclip
       end
 
       def flush_writes
-        puts("[paperclip] Writing files #{@queued_for_write.count}")
         attachment_definitions = get_attachment_definitions
 
         @queued_for_write.each do |style, file|
-          puts("[paperclip] Writing files for #{file} #{style}")
-
           PaperclipDatabaseStorage::Attachment.new do |a|
             a.attached_type = self.instance.class.name
             a.attached_id = self.instance.id
