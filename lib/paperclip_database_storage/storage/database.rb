@@ -73,7 +73,6 @@ module Paperclip
 
       def flush_deletes
         @queued_for_delete.each do |style|
-          puts("[paperclip] Deleting files for #{style}")
           attachment = get_attachment(style)
           attachment.destroy if !attachment.nil?
         end

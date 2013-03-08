@@ -1,6 +1,6 @@
 Rails.application.routes.prepend do
   # Dynamically create routes based on defined attachments
-  Rails.application.eager_load!
+  begin ; Rails.application.eager_load! ; rescue ; end
 
   loaded_url_templates = []
   must_create_default_route = false
