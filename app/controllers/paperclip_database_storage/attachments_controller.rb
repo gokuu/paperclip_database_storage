@@ -18,8 +18,9 @@ class PaperclipDatabaseStorage::AttachmentsController < ApplicationController
     original_extension = File.extname(original_filename)
     filename = params[:filename] || original_filename
     filename = "#{filename}#{original_extension}" unless filename =~ /#{original_extension}$/
+    file_data = attachment.base64_encoded ? Base64.decode64(attachment.file_data) : attachment.file_data
 
-    send_data attachment.file_data,
+    send_data file_data,
       :type => attachment.content_type,
       :disposition => (attachment.content_type.strip =~ /^image/ ? 'inline' : 'attachment'),
       :filename => filename

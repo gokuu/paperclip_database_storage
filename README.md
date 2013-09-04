@@ -11,7 +11,7 @@ paperclip_database_storage requires [Paperclip](https://github.com/thoughtbot/pa
 Installation
 ------------
 
-paperclip_database_storage is distributed as a gem, and that is how it should be used in your app. 
+paperclip_database_storage is distributed as a gem, and that is how it should be used in your app.
 
 Include the gem in your `Gemfile`, from rubygems:
 
@@ -21,6 +21,9 @@ Or, get the master branch from the repository:
 
       gem 'paperclip_database_storage', :git => 'git://github.com/gokuu/paperclip_database_storage.git'
 
+And afterwards, run the task to create the necessary migrations:
+
+      rake paperclip_database_storage:setup
 Usage
 -----
 
@@ -28,12 +31,12 @@ All you need to do is, when defining a [Paperclip](https://github.com/thoughtbot
 
 ```ruby
 class MyModel < ActiveRecord::Base
-  has_attached_file :attachment, 
-    :storage => :database, 
+  has_attached_file :attachment,
+    :storage => :database,
     :styles => {
       :medium => "300x300>",
       :thumb => "100x100>"
-    }, 
+    },
     :url => "/:class/:attachment/:id/:style/:basename.:extension"
 end
 ```
@@ -41,7 +44,8 @@ end
 Remarks
 -------
 
-The migration defined by `paperclip_database_storage` contains several indexes, as every possible combination of the fields that can identify a single attachment. This should help getting an attachment as quickly as possible using any combination of parameters
+The migration defined by `paperclip_database_storage` contains several indexes, as every possible combination of the fields that can identify a single attachment. This should help getting an attachment as quickly as possible using any combination of parameters.
+As of version 3.0.7, the attachments are stored encoded in base64, to prevent loss of information. All previous stored attachments will still be usable as the table has a new field to indicate whether the attachment is stored base64-encoded.
 
 Limitations
 -----------

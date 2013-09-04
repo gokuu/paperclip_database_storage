@@ -3,6 +3,7 @@ require 'paperclip_database_storage'
 require 'paperclip_database_storage/storage/database'
 require 'rails'
 require 'paperclip'
+require 'base64'
 
 # This will load the necessary models and controllers
 module PaperclipDatabaseStorage

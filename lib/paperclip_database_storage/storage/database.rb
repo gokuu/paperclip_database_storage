@@ -65,7 +65,8 @@ module Paperclip
             a.content_type = file.content_type
             a.attachment_name = attachment_definitions.keys.first
             a.file_size = file.size
-            a.file_data = file.read
+            a.file_data = Base64.encode64(file.read)
+            a.base64_encoded = true
           end.save
         end
         @queued_for_write = {}
