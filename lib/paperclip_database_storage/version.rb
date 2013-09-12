@@ -1,3 +1,3 @@
 module PaperclipDatabaseStorage
-  VERSION = "3.0.7" unless defined? PaperclipDatabaseStorage::VERSION
+  VERSION = "3.0.8" unless defined? PaperclipDatabaseStorage::VERSION
 end
